@@ -1,0 +1,232 @@
+body {
+  background: #E6E8E9; /*15202b*/;
+  font-family: 'Asap', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.navbar {
+  background-color: #1E96EB /*#E0245E*/;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.avator {
+  border-radius: 100px;
+  width: 60px;
+  margin-right: 15px;
+}
+
+.card {
+  border: none;
+}
+
+.card-header {
+  background-color: #1E96EB /*#E0245E*/;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+}
+
+#main {
+  justify-content: center;
+}
+
+#inputTweetArea {
+  border-radius: 20px;
+}
+
+#leftBtn {
+  width: 50%;
+  text-align: left;
+  padding: 0;
+}
+
+#rightBtn {
+  width: 50%;
+  text-align: right;
+  padding: 0;
+}
+
+.tweet-wrap {
+  max-width: 490px;
+  background: #fff;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 3px;
+  padding: 30px;
+  border-bottom: 1px solid #e6ecf0;
+  border-top: 1px solid #e6ecf0;
+}
+
+.tweet-header {
+  display: flex;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.tweet-header-info {
+  font-weight: bold;
+}
+
+.tweet-header-info span {
+  color: #657786;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.tweet-header-info p {
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+.tweet-img-wrap {
+  padding-left: 60px;
+}
+
+.tweet-info-counts {
+  display: flex;
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+.tweet-info-counts div {
+  display: flex;
+  margin-right: 20px;
+}
+
+.tweet-info-counts div svg {
+  color: #657786;
+  margin-right: 10px;
+}
+
+@media screen and (max-width:430px) {
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .tweet-header {
+    flex-direction: column;
+  }
+  .tweet-header img {
+    margin-bottom: 20px;
+  }
+  .tweet-header-info p {
+    margin-bottom: 30px;
+  }
+  .tweet-img-wrap {
+    padding-left: 0;
+  }
+  .tweet-info-counts {
+    display: flex;
+    margin-left: 0;
+  }
+  .tweet-info-counts div {
+    margin-right: 10px;
+  }
+}
+
+.btn {
+  background-color: #1E96EB /*E0245E*/ ;
+  border-style: none;
+  font-weight: bold;
+  color: white;
+}
+
+#charBadge {
+  background-color: #1E96EB /*E0245E*/;
+  position: relative;
+  left: -8px;
+  font-size: 1rem;
+  height: 100%;
+}
+
+a:link {
+  color: #1E96EB /*E0245E*/;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #71C4FF;
+  color: white;
+}
+
+
+/* LOGIN PAGE*/
+.login-page{
+  background: white;
+}
+
+.twitter-login-box {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.twitter-login-box header img{
+    width: 70px;
+}
+
+.twitter-login-box header{
+    text-align: center;
+}
+.input-wrapper{
+    margin-bottom: 15px;
+}
+
+.input-wrapper label,
+.input-wrapper input{
+    width: 100%;
+    display: block;
+}
+
+.input-wrapper input{
+    border: none;
+    background-color: #eee;
+    padding: 10px;
+    font-size: 20px;
+    border-bottom: 3px solid #6a6a6a;
+}
+
+.input-wrapper input[type="password"]{
+   border-bottom: 3px solid red;
+}
+
+.input-wrapper input:focus{
+    outline: none;
+}
+
+.input-wrapper label{
+    background-color: #eee;
+    padding: 10px;
+    color: #6a6a6a;
+}
+
+.twitter-btn{
+    background-color: #1E96EB;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.twitter-login-box .footer{
+    text-align: center;
+    margin-top: 20px;
+    color: #1E96EB;
+}
+.twitter-login-box .footer a{
+    color: #1E96EB;
+    text-decoration: none;
+}
+
+
+

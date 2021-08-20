@@ -1,4 +1,4 @@
-# Este es un clon de Twitter
+# Estos son los archivos iniciales del proyecto
 
 ## Este proyecto corresponde al tutorial de youtube: 
 

@@ -1,106 +1,102 @@
 {% extends 'twitter/layout.html' %}
-{% load humanize %}
 {% block content %}
+<div id="main" class="container-fluid d-flex">
+    <!-- Barra Izquierda -->
+    <div class="sidebar m-5 d-none d-md-block">
+        <div class="">
+            <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
+                <img class="card-img-top rounded-circle"
+                    style="width:60%; position: relative;left: 62px;padding-top: 20px;"
+                    src="https://i.pinimg.com/736x/ea/f2/2e/eaf22e6a189f76ed24054e2ca7feb00f.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">Tony Stark</h5>
+                    <h6 class="card-title font-weight-bold">@iron_man</h6>
 
-    <div id="main" class="container-fluid d-flex">
-        <!-- Barra Izquierda -->
-        <div class="sidebar m-5 d-none d-md-block">
-            <div class="">
-                <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
-                    <img class="card-img-top rounded-circle"
-                        style="width:60%; position: relative;left: 62px;padding-top: 20px;"
-                        src="{{ request.user.profile.image.url }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold">{{ request.user.first_name }}</h5>
-                        <h6 class="card-title font-weight-bold">@{{ request.user }}</h6>
-                        
 
-                        <p class="card-text">{{ request.user.profile.bio }}</p>
-                        <h6 class="card-title font-weight-bold">
-                        {{ request.user.profile.followers.count }} Followers   
-                        {{ request.user.profile.following.count }} Following
-                        </h6>
-                        <a href="#" class="btn  text-white rounded-pill">Mi perfil</a>
-                    </div>
-
+                    <p class="card-text">You know who i am. </p>
+                    <h6 class="card-title font-weight-bold">
+                        100 Followers
+                        100 Following
+                    </h6>
+                    <a href="#" class="btn  text-white rounded-pill">Mi perfil</a>
                 </div>
-                <a href="{% url 'editar' %}" id="addATweetLeft" onclick="addTweet()" type="button"
+
+            </div>
+            <button id="addATweetLeft" onclick="addTweet()" type="button"
                 style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
-                class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</a>
+                class="btn btn-lg btn-block mt-4 text-white ">Editar mi perfil</button>
+        </div>
+    </div>
+    <!-- End Barra Izquierda -->
+
+    <!-- Center -->
+    <div class="content">
+
+        <div id="inputTweetArea" class="tweet-wrap">
+            <div class="d-flex">
+                <div class="col-xs">
+                    <!-- Image form -->
+                    <img src="https://i.pinimg.com/736x/ea/f2/2e/eaf22e6a189f76ed24054e2ca7feb00f.jpg" alt=""
+                        class="avator">
+                    <!-- Formulario -->
+                </div>
+
+                <!-- Formulario -->
+                <form class="col pr-0">
+                    <textarea class="form-control w-100" id="contentsBox" placeholder="What's happening?"></textarea>
+                    <div class="container d-flex" style="padding: 1rem 0 0 0;">
+                        <div id="leftBtn">
+                            <div id="charBadge" class="badge badge-pill badge-primary ml-2"
+                                style="display: flex;align-items: center;width: 50%;justify-content: center;">
+                                <div id="charCountArea">140</div>
+                            </div>
+                        </div>
+
+                        <div id="rightBtn">
+                            <button class="btn rounded-pill" style="width: 100%;">Tweet</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Formulario -->
+
+            </div>
+            <div class="d-flex justify-content-center mt-2">
             </div>
         </div>
-        <!-- End Barra Izquierda -->
 
-        <!-- Center -->
-        <div class="content">
-
-            <div id="inputTweetArea" class="tweet-wrap">
-                <div class="d-flex">
-                    <div class="col-xs">
-                        <!-- Image form -->
-                        <img src="{{ request.user.profile.image.url }}" alt="" class="avator">
-                        <!-- Formulario -->
+        <!-- Tweets -->
+        <div id="tweetCards">
+            <!-- FOR LOOP HERE -->
+            <div class="tweet-wrap" style="border-radius:20px">
+                <div class="tweet-header">
+                    <img src="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
+                        alt="" class="avator">
+                    <div class="tweet-header-info">
+                        * based snow bunny <span>@yumjeezy</span><span>. Jun 27
+                        </span>
+                        <p>🔥 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt
+                            ut labore et dolore magna aliqua. </p>
                     </div>
-
-                    <!-- Formulario -->
-                    <form class="col pr-0" method="post">
-                        {% csrf_token %}
-                        {{ form.content }}
-                        <div class="container d-flex" style="padding: 1rem 0 0 0;">
-                            <div id="leftBtn">
-                                <div id="charBadge" class="badge badge-pill badge-primary ml-2"
-                                    style="display: flex;align-items: center;width: 50%;justify-content: center;">
-                                    <div id="charCountArea">140</div>
-                                </div>
-                            </div>
-
-                            <div id="rightBtn">
-                                <button class="btn rounded-pill"
-                                    style="width: 100%;">Tweet</button>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Formulario -->
-
                 </div>
-                <div class="d-flex justify-content-center mt-2">
-                </div>
-            </div>
+                <div class="tweet-info-counts">
 
-            <!-- Tweets -->
-            {% for post in posts %}
-            <div id="tweetCards">
-                <!-- FOR LOOP HERE -->
-                <div class="tweet-wrap" style="border-radius:20px">
-                    <div class="tweet-header">
-                        <img src="{{ post.user.profile.image.url }}"
-                            alt="" class="avator">
-                        <div class="tweet-header-info">
-                            <a href="{% url 'profile' post.user %}">
-                            {{ post.user.first_name }} 
-                            </a>
-                            <span>@{{ post.user }}</span><span>{{ post.timestamp|naturaltime }}
-                            </span>
-                            <p>{{ post.content }}</p>
-                        </div>
-                    </div>
-                    <div class="tweet-info-counts">
-
-                        <div class="comments">
-                            <button style="background: white; border: none;"> 
-                            <svg class="feather feather-message-circle sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
-                                width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <div class="comments">
+                        <button style="background: white; border: none;">
+                            <svg class="feather feather-message-circle sc-dnqmqq jxshSx"
+                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true">
                                 <path
                                     d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
                                 </path>
                             </svg>
-                            </button>
-                            <div class="comment-count"></div>
-                        </div>
+                        </button>
+                        <div class="comment-count"></div>
+                    </div>
 
-                        <div class="retweets">
-                            <button style="background: white; border: none;"> 
+                    <div class="retweets">
+                        <button style="background: white; border: none;">
                             <svg class="feather feather-repeat sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
                                 width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -110,11 +106,11 @@
                                 <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
                             </svg>
                         </button>
-                            <div class="retweet-count"> </div>
-                        </div>
+                        <div class="retweet-count"> </div>
+                    </div>
 
-                        <div class="likes">
-                            <button style="background: white; border: none;"> 
+                    <div class="likes">
+                        <button style="background: white; border: none;">
                             <svg class="feather feather-heart sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
                                 width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -122,41 +118,44 @@
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                                 </path>
                             </svg>
-                            </button>
-                            <div class="likes-count"> </div>
-                        </div>
-
-                        <!-- DELETE -->
-                        {% if request.user == post.user %}
-                        <div class="trash">
-                            <a href="{% url 'delete' post.id %}" style="background: white; border: none;">
-                                <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        {% endif %}
-                        <!-- END-DELETE -->
+                        </button>
+                        <div class="likes-count"> </div>
                     </div>
+
+                    <!-- DELETE -->
+                    <div class="trash">
+                        <a href="#" style="background: white; border: none;">
+                            <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <!-- END-DELETE -->
                 </div>
-                <!-- FOR LOOP HERE -->
             </div>
-            {% endfor %}
-            <!-- EndTweets -->
+            <!-- FOR LOOP HERE -->
+
         </div>
-        <!-- End Center -->
+        <!-- EndTweets -->
 
 
-        <!-- Barra Derecha -->
-        <div class="sidebar m-5 d-none d-xl-block">
-            <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                    Who to Follow
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                    <li class="list-group-item"><a href="#" style="text-decoration: none;color: #657787;">@mundopython</a></li>
-                </ul>
+    </div>
+    <!-- End Center -->
+
+
+    <!-- Barra Derecha -->
+    <div class="sidebar m-5 d-none d-xl-block">
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                Who to Follow
             </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="https://twitter.com/playboicarti"
+                        style="text-decoration: none;color: #657787;">@playboicarti</a></li>
+                <li class="list-group-item"><a href="https://twitter.com/LILUZIVERT"
+                        style="text-decoration: none;color: #657787;">@LILUZIVERT</a></li>
+                <li class="list-group-item"><a href="https://twitter.com/NARUTO_kousiki"
+                        style="text-decoration: none;color: #657787;">@NARUTO_kousiki</a></li>
+            </ul>
         </div>
     </div>
+</div>
 {% endblock content %}

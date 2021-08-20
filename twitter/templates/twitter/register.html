@@ -1,10 +1,12 @@
 {% extends 'twitter/layout.html' %}
 
 {% block content %}
+
 <body class="login-page">
     <div class="twitter-login-box">
         <header>
-            <img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-jumbo-v4.jpg?quality=90&auto=webp" alt="twitter logo">
+            <img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-jumbo-v4.jpg?quality=90&auto=webp"
+                alt="twitter logo">
             <h1>Registrate en Twitter</h1>
         </header>
 
@@ -12,24 +14,20 @@
             {% csrf_token %}
             <div class="input-wrapper">
                 <label for="user-name-id">First Name</label>
-                {{ form.first_name }}
+
             </div>
             <div class="input-wrapper">
                 <label for="user-name-id">Username</label>
-                {{ form.username }}
             </div>
             <div class="input-wrapper">
                 <label for="user-name-id">Email</label>
-                {{ form.email }}
             </div>
 
             <div class="input-wrapper">
                 <label for="password-id">Password</label>
-                {{ form.password1 }}
             </div>
             <div class="input-wrapper">
                 <label for="password-id">Confirm Password</label>
-                {{ form.password2 }}
             </div>
 
             <button class="twitter-btn">Registrarse</button>
@@ -41,4 +39,4 @@
 
     </div>
 
-{% endblock content %}
+    {% endblock content %}

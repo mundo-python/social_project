@@ -2,43 +2,38 @@
 
 {% block content %}
 
-    <div id="main" class="container-fluid d-flex">
-        <div class="">
-            <div id="inputTweetArea" class="tweet-wrap2">
-                <div class="d-flex">
-                    <div class="col-xs">
-                        <!-- Image form -->
-                        <img src="{{ request.user.profile.image.url }}" alt="" class="avator">
-                        <!-- Formulario -->
+<div id="main" class="container-fluid d-flex">
+    <div class="">
+        <div id="inputTweetArea" class="tweet-wrap2">
+            <div class="d-flex">
+                <div class="col-xs">
+                    <!-- Image form -->
+                    <img src="../../static/img/tony.jpg" alt="" class="avator">
+                    <!-- Formulario -->
+                </div>
+
+                <!-- Formulario -->
+                <form class="col pr-0" method="post" enctype="multipart/form-data">
+                    <div class="input-wrapper">
+                        <label>Nombre</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="user-name-id">Username</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Bio</label>
+                    </div>
+                    <div class="input-wrapper">
                     </div>
 
-                    <!-- Formulario -->
-                    <form class="col pr-0" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="input-wrapper">
-                            <label>Nombre</label>
-                            {{ u_form.first_name }}
-                        </div>
-                        <div class="input-wrapper">
-                            <label for="user-name-id">Username</label>
-                            {{ u_form.username }}
-                        </div>
-                        <div class="input-wrapper">
-                            <label>Bio</label>
-                            {{ p_form.bio }}
-                        </div>
-                        <div class="input-wrapper">
-                            {{ p_form.image }}
-                        </div>
+                    <button class="twitter-btn">Actualizar</button>
+                </form>
+                <!-- Formulario -->
 
-                        <button class="twitter-btn">Actualizar</button>
-                    </form>
-                    <!-- Formulario -->
-                    
-                </div>
             </div>
         </div>
-        <!-- End Center -->
     </div>
+    <!-- End Center -->
+</div>
 
 {% endblock content %}
